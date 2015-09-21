@@ -30,6 +30,8 @@ public class ProgrammePrincipal1 {
             Utilisateur u1 = new Utilisateur("Durant", "Paul", Personne.ADMINISTRATEUR, "paul.durant", "tototo", "");
             Utilisateur u2 = new Utilisateur("Dupont", "Jean", Personne.STATISTICIEN, "jean.dupont", "tototo", "paul.durant");
             users.ajouterUtilisateur(u1);
+            for(int i = 0; i < 200; i++)
+            	users.ajouterUtilisateur(u1);
             users.ajouterUtilisateur(u2);
         }
 
