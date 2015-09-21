@@ -3,6 +3,7 @@ import javax.swing.JTable;
 import javax.swing.JScrollBar;
 import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
+import java.awt.*;
 
 public class PanelListeUtilisateur extends JPanel {
 	private TableModel t;
@@ -13,11 +14,11 @@ public class PanelListeUtilisateur extends JPanel {
 	 */
 	public PanelListeUtilisateur(TableModel tableModel) {
 		t = tableModel;
-		setLayout(null);
+		setLayout(new BorderLayout());
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(0, 0, 450, 300);
-		add(scrollPane);
+		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable(t);
 		table.setShowGrid(false);
