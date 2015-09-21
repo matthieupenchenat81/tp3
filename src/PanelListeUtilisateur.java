@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.JScrollBar;
 
 public class PanelListeUtilisateur extends JPanel {
 	private JTable table;
@@ -9,6 +10,10 @@ public class PanelListeUtilisateur extends JPanel {
 	 */
 	public PanelListeUtilisateur() {
 		setLayout(null);
+		
+		JScrollBar scrollBar = new JScrollBar();
+		scrollBar.setBounds(429, 6, 15, 288);
+		add(scrollBar);
 		
 		table = new JTable();
 		table.setShowHorizontalLines(false);
