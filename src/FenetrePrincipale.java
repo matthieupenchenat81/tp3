@@ -49,6 +49,9 @@ public class FenetrePrincipale extends JFrame {
 
         JMenuItem mntmQuitter = new JMenuItem("Quitter");
         mntmQuitter.addActionListener(new EcouteurFenetrePrincipale(this));
+        
+        JMenuItem mntmListeUtilisateurs = new JMenuItem("Liste Utilisateurs");
+        mnFichier.add(mntmListeUtilisateurs);
         mnFichier.add(mntmQuitter);
 
         JMenu mnGestion = new JMenu("Gestion");
