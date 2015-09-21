@@ -10,7 +10,7 @@ public class FenetrePrincipale extends JFrame {
     private JPanel contentPane;
     private ListeUtilisateursImpl users;
     private Utilisateur loggedUser;
-    private JPanel panel_1, panel_2, panel_3;
+    private JPanel panel_1, panel_2, panel_3, panel_4;
 
     public JPanel getP1() {
         return panel_1;
@@ -20,6 +20,9 @@ public class FenetrePrincipale extends JFrame {
     }
     public JPanel getP3() {
         return panel_3;
+    }
+    public JPanel getP4() {
+        return panel_4;
     }
 
 
@@ -33,7 +36,7 @@ public class FenetrePrincipale extends JFrame {
         this.loggedUser = users.obtenirUtilisateur(users.obtenirNumeroLigneUtilisateur(login));
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setBounds(20,50, 1300, 600);
+        setBounds(20, 50, 1300, 600);
         setResizable(false);
 
         JMenuBar menuBar = new JMenuBar();
@@ -56,6 +59,11 @@ public class FenetrePrincipale extends JFrame {
         JMenuItem mntmListeUtilisateurs = new JMenuItem("Liste Utilisateurs P3");
         mntmListeUtilisateurs.addActionListener(new EcouteurFenetrePrincipale(this));
         mnFichier.add(mntmListeUtilisateurs);
+
+        JMenuItem mntmListeUtilisateurs3 = new JMenuItem("Liste Utilisateurs P4");
+        mntmListeUtilisateurs3.addActionListener(new EcouteurFenetrePrincipale(this));
+        mnFichier.add(mntmListeUtilisateurs3);
+
         mnFichier.add(mntmQuitter);
 
         JMenu mnGestion = new JMenu("Gestion");
@@ -92,7 +100,7 @@ public class FenetrePrincipale extends JFrame {
         panel.add(panel_3);
         panel_3.setLayout(new BorderLayout(0, 0));
 
-        JPanel panel_4 = new JPanel();
+        this.panel_4 = new JPanel();
         panel_4.setBorder(new TitledBorder(null, "P3", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.add(panel_4);
         panel_4.setLayout(new BorderLayout(0, 0));

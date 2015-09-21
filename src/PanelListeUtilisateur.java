@@ -1,6 +1,5 @@
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.JScrollBar;
 import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 import java.awt.*;
