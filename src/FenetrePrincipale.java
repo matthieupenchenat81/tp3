@@ -10,15 +10,18 @@ public class FenetrePrincipale extends JFrame {
     private JPanel contentPane;
     private ListeUtilisateursImpl users;
     private Utilisateur loggedUser;
-    private JPanel panel_1, panel_2;
+    private JPanel panel_1, panel_2, panel_3;
 
     public JPanel getP1() {
         return panel_1;
     }
-
     public JPanel getP2() {
         return panel_2;
     }
+    public JPanel getP3() {
+        return panel_3;
+    }
+
 
     /**
      * Create the frame.
@@ -51,6 +54,7 @@ public class FenetrePrincipale extends JFrame {
         mntmQuitter.addActionListener(new EcouteurFenetrePrincipale(this));
         
         JMenuItem mntmListeUtilisateurs = new JMenuItem("Liste Utilisateurs");
+        mntmListeUtilisateurs.addActionListener(new EcouteurFenetrePrincipale(this));
         mnFichier.add(mntmListeUtilisateurs);
         mnFichier.add(mntmQuitter);
 
@@ -83,7 +87,7 @@ public class FenetrePrincipale extends JFrame {
         panel.add(panel_2);
         panel_2.setLayout(new BorderLayout(0, 0));
 
-        JPanel panel_3 = new JPanel();
+        this.panel_3 = new JPanel();
         panel_3.setBorder(new TitledBorder(null, "P3", TitledBorder.LEADING, TitledBorder.TOP, null, null));
         panel.add(panel_3);
         panel_3.setLayout(new BorderLayout(0, 0));

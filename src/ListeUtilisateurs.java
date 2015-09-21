@@ -1,6 +1,7 @@
+import javax.swing.table.TableModel;
 import java.io.File;
 
-interface ListeUtilisateurs 
+interface ListeUtilisateurs extends TableModel
 // Liste d'Utilisateur. Les éléments seront indicés à partir de 0
 {
 	void ajouterUtilisateur(Utilisateur u); // Ajoute un utilisateur à la liste

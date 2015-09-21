@@ -28,6 +28,21 @@ public class Personne implements Serializable
         return prenom;
     }
 
+    public String getRole() {
+        switch (role) {
+            case 0:
+                return "ADMINISTRATEUR";
+            case 1:
+                return "STATISTICIEN";
+            case 2:
+                return "INFIRMIER";
+            case 3:
+                return "PATIENT";
+            default:
+                return "Err";
+        }
+    }
+
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }

@@ -50,11 +50,15 @@ public class EcouteurFenetrePrincipale implements ActionListener {
                 fermer(f.getP2());
                 break;
 
+            case "Liste Utilisateurs":
+                f.getP3().add(new PanelListeUtilisateur(this.liste));
+                f.validate();
+                break;
+
             case "Supprimer utilisateur":
                 f.getP2().add(new SupprimerUtilisateur(this.liste));
                 f.validate();
                 fermer(f.getP1());
-
                 break;
 
             case "Créer":

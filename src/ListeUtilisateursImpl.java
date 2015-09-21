@@ -5,6 +5,8 @@
  */
 
 import javax.rmi.CORBA.Util;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.TableModel;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,18 +23,16 @@ import java.util.logging.Logger;
  *
  * @author Jean-Christophe
  */
-public class ListeUtilisateursImpl implements ListeUtilisateurs
+public class ListeUtilisateursImpl extends AbstractTableModel implements ListeUtilisateurs
 {
     // Attributs
     List<Utilisateur> liste;
-    
-    // Le constructeur et les méthodes
 
+    // Le constructeur et les méthodes
     public ListeUtilisateursImpl() {
         liste = new ArrayList<Utilisateur>();
     }
-    
-    
+
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
         liste.add(u);
@@ -133,5 +133,39 @@ public class ListeUtilisateursImpl implements ListeUtilisateurs
         }
         return str.toString();
     }
-    
+
+    public int getColumnCount() {
+        return 3;
+    }
+
+    public int getRowCount() {
+        return liste.size();
+    }
+
+    public String getColumnName(int col) {
+        switch (col) {
+            case 0:
+                return "Login";
+            case 1:
+                return "Nom";
+            case 2:
+                return "Rôle";
+        }
+        return "False";
+    }
+
+    public Object getValueAt(int row, int col) {
+
+        Utilisateur u = liste.get(row);
+        switch (col) {
+            case 0:
+                return u.getLogin();
+            case 1:
+                return u.getNom();
+            case 2:
+                return u.getRole();
+        }
+
+        return "FALSE_GET_VALUE";
+    }
 }
