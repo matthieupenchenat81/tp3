@@ -5,6 +5,9 @@
  */
 
 import javax.rmi.CORBA.Util;
+import javax.swing.JTable;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableModel;
 import java.io.File;
@@ -23,19 +26,28 @@ import java.util.logging.Logger;
  *
  * @author Jean-Christophe
  */
-public class ListeUtilisateursImpl extends AbstractTableModel implements ListeUtilisateurs
+public class ListeUtilisateursImpl implements ListeUtilisateurs, TableModel
 {
     // Attributs
     List<Utilisateur> liste;
+    List<TableModelListener> listeJTable;
+     
 
     // Le constructeur et les méthodes
     public ListeUtilisateursImpl() {
         liste = new ArrayList<Utilisateur>();
+        listeJTable = new ArrayList<TableModelListener>();
+    }
+    
+    public void ajouterJTable(JTable tab)
+    {
+    	listeJTable.add(tab);
     }
 
     @Override
     public void ajouterUtilisateur(Utilisateur u) {
-        liste.add(u);
+       liste.add(u);
+       this.fireTableRows();
     }
 
     @Override
@@ -46,6 +58,7 @@ public class ListeUtilisateursImpl extends AbstractTableModel implements ListeUt
     @Override
     public void supprimerUtilisateur(int numeroLigne) {
         liste.remove(numeroLigne);
+        //fireTableRowsDeleted(0, getRowCount());
     }
 
     @Override
@@ -168,4 +181,43 @@ public class ListeUtilisateursImpl extends AbstractTableModel implements ListeUt
 
         return "FALSE_GET_VALUE";
     }
+
+	@Override
+	public Class<?> getColumnClass(int columnIndex) {
+		// TODO Auto-generated method stub
+		return String.class ;
+	}
+
+	@Override
+	public boolean isCellEditable(int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void setValueAt(Object aValue, int rowIndex, int columnIndex) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		this.listeJTable.add(l);
+		
+	}
+
+	@Override
+	public void removeTableModelListener(TableModelListener l) {
+		// TODO Auto-generated method stub
+		this.listeJTable.remove(l);
+	}
+	
+	public void fireTableRows()
+	{
+		for(TableModelListener t: listeJTable)
+		{
+			t.tableChanged(new TableModelEvent(this));
+		}
+	}
 }

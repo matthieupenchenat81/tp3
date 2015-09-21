@@ -1,5 +1,6 @@
 import javax.swing.JPanel;
 import javax.swing.JTable;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.TableModel;
 import javax.swing.JScrollPane;
 import java.awt.*;
@@ -20,9 +21,16 @@ public class PanelListeUtilisateur extends JPanel {
 		add(scrollPane, BorderLayout.CENTER);
 		
 		table = new JTable(t);
+		table.setCellSelectionEnabled(true);
 		table.setShowGrid(false);
 		table.setShowVerticalLines(false);
+		
 		scrollPane.setViewportView(table);
 
+	}
+	
+	public boolean isCellEditable(int rowIndex, int columnIndex)
+	{
+		return true;
 	}
 }

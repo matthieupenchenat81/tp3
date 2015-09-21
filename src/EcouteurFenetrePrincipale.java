@@ -45,7 +45,7 @@ public class EcouteurFenetrePrincipale implements ActionListener {
                 System.out.println("utilisateurs : "+ this.liste.toString());
                 f.getP1().add(new AjouterUtilisateur(this.liste));
                 f.validate();
-                fermer(f.getP2());
+                fermer(f.getP2());                
                 break;
 
             case "Liste Utilisateurs P3":
@@ -75,9 +75,7 @@ public class EcouteurFenetrePrincipale implements ActionListener {
                 else {
                     Utilisateur newUser = new Utilisateur(nom, prenom, getRole(role), nom + "." + prenom, "tototo", "");
                     liste.ajouterUtilisateur(newUser);
-
-                    System.out.println("Nouvelle liste: " + liste.toString());
-                    JOptionPane.showMessageDialog(p, "Success: user created !");
+                    //JOptionPane.showMessageDialog(p, "Success: user created !");
                     ((AjouterUtilisateur)p).vider();
                 }
                 break;
@@ -87,7 +85,7 @@ public class EcouteurFenetrePrincipale implements ActionListener {
                     String pseudo = ((SupprimerUtilisateur)p).getLoginSelected();
                     liste.supprimerUtilisateur(liste.obtenirNumeroLigneUtilisateur(pseudo));
                     ((SupprimerUtilisateur)p).rafraichir();
-                    JOptionPane.showMessageDialog(p, "Success: user deleted !");
+                    //JOptionPane.showMessageDialog(p, "Success: user deleted !");
                     if(liste.liste.size() == 0)
                         ((SupprimerUtilisateur)p).setListEmpty();
                 } else {
